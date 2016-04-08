@@ -10,11 +10,39 @@ Author URI: http://github.com/seanchen
 // the symlink safe way for plugin path.
 $search_toolkit_file = __FILE__;
 define('SEARCH_TOOLKIT_FILE', $search_toolkit_file);
+define('SEARCH_TOOLKIT_BASE_PATH', 
+       basename(dirname($search_toolkit_file)));
 define('SEARCH_TOOLKIT_PATH',
-       WP_PLUGIN_DIR . '/' . basename(dirname($search_toolkit_file)));
+       WP_PLUGIN_DIR . '/' . SEARCH_TOOLKIT_BASE_PATH);
 
 // load the admin page index file, which will load all admin page.
 //require_once(SEARCH_TOOLKIT_PATH . '/admin/index.php');
+
+// adding the dashboard page to manage
+add_action('admin_menu', 'search_toolkit_admin_init');
+function search_toolkit_admin_init() {
+
+    $main_page = SEARCH_TOOLKIT_BASE_PATH . '/admin/livesearch.php';
+    $advanced = SEARCH_TOOLKIT_BASE_PATH . '/admin/advancedsearch.php';
+
+    add_menu_page('Search Toolkit', 'Search Toolkit',
+                  'manage_options',
+                  $main_page,
+                  '');
+
+    // the general settings page.
+    add_submenu_page($main_page,
+                     'Search Toolkit LiveSearch Settings',
+                     'LiveSearch Settings',
+                     'manage_options',
+                     $main_page);
+
+    add_submenu_page($main_page,
+                     'Search Toolkit Advanced Search Settings',
+                     'Advanced Search',
+                     'manage_options',
+                     $advanced);
+}
 
 /**
  * a simple filter hook function to demostrate the filter format.
