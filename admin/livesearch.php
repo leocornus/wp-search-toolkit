@@ -9,7 +9,7 @@ if (isset($_POST['livesearch_settings_form_submit']) &&
     $_POST['livesearch_settings_form_submit'] == 'Y') {
 
     // save settings submit. save user input to database.
-    update_site_option('livesearch_filter_options',
+    update_option('livesearch_filter_options',
             stripslashes($_POST['livesearch_filter_options']));
 
     // show the message.
@@ -33,7 +33,7 @@ if (isset($_POST['livesearch_settings_form_submit']) &&
         <td>
           <textarea name="livesearch_filter_options"
                     rows="6" cols="98"
-          ><?php echo get_site_option('livesearch_filter_options')?></textarea>
+          ><?php echo get_option('livesearch_filter_options')?></textarea>
         </td>
       </tr>
       <tr>
