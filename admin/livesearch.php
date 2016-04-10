@@ -16,6 +16,13 @@ if (isset($_POST['livesearch_settings_form_submit']) &&
     echo '<div class="updated"><p><strong>Settings Updated</strong></p></div>';
 }
 
+$options = get_option('livesearch_filter_options');
+if($options === false) {
+    // no options set up yet, set the default.
+    // This is a sample default filter options, based on the 
+    // solr syntax.
+    $options = st_livesearch_default_options();
+}
 ?>
 
 <div class="wrap">
@@ -33,7 +40,7 @@ if (isset($_POST['livesearch_settings_form_submit']) &&
         <td>
           <textarea name="livesearch_filter_options"
                     rows="6" cols="98"
-          ><?php echo get_option('livesearch_filter_options')?></textarea>
+          ><?php echo $options?></textarea>
         </td>
       </tr>
       <tr>

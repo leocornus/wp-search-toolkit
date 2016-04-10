@@ -17,6 +17,7 @@ define('SEARCH_TOOLKIT_PATH',
 
 // load the admin page index file, which will load all admin page.
 //require_once(SEARCH_TOOLKIT_PATH . '/admin/index.php');
+require_once(SEARCH_TOOLKIT_PATH . '/functions.php');
 
 // adding the dashboard page to manage
 add_action('admin_menu', 'search_toolkit_admin_init');
@@ -37,25 +38,24 @@ function search_toolkit_admin_init() {
                      'manage_options',
                      $main_page);
 
-    add_submenu_page($main_page,
-                     'Search Toolkit Advanced Search Settings',
-                     'Advanced Search',
-                     'manage_options',
-                     $advanced);
+//    add_submenu_page($main_page,
+//                     'Search Toolkit Advanced Search Settings',
+//                     'Advanced Search',
+//                     'manage_options',
+//                     $advanced);
 }
 
 /**
  * a simple filter hook function to demostrate the filter format.
  */
-function quick_test_filter_options($options) {
+function search_toolkit_livesearch_filter_options($options) {
 
-    $my_filters = <<<FILTERS
-    {label: 'All', value: ''},
-    {label: 'Acronyms', value: 'site: wiki AND keywords: Acronyms'},
-    {label: 'User Profile', value: 'keywords: "User Profile"'},
-FILTERS;
+    $options = get_option('livesearch_filter_options');
+    if($options === false) {
+        $options = st_livesearch_default_options();
+    }
 
-    return $my_filters;
+    return $options;
 }
 add_filter('livesearch_options_filter',
-           'quick_test_filter_options', 10, 1);
+           'search_toolkit_livesearch_filter_options', 10, 1);
