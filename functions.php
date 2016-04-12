@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Preparing the default filter options for livesearch.
+ * The filter option is using JSON format.
+ * The value for each option will be based on
+ * Solr filter query syntax.
+ */
 function st_livesearch_default_options() {
 
     $options = <<<FILTERS
