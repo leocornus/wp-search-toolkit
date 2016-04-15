@@ -23,3 +23,13 @@ Test-driven Development
 
 This plugin is using `wp-cli <https://github.com/wp-cli>`_ to closely 
 follow Test-driven development methodology.
+
+Solr query syntax
+-----------------
+
+Some memo for Solr query syntax
+
+Here are OR relationship with multiple keywords::
+
+  {label: 'Docs with any of these keywords', 
+   value: 'keywords: "Key One" OR keywords: "Key Two"'},
