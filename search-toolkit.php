@@ -48,7 +48,7 @@ function search_toolkit_admin_init() {
 /**
  * a simple filter hook function to demostrate the filter format.
  */
-function search_toolkit_livesearch_filter_options($options) {
+function st_livesearch_filter_options($options) {
 
     $options = get_option('livesearch_filter_options');
     if($options === false) {
@@ -58,4 +58,4 @@ function search_toolkit_livesearch_filter_options($options) {
     return $options;
 }
 add_filter('livesearch_options_filter',
-           'search_toolkit_livesearch_filter_options', 10, 1);
+           'st_livesearch_filter_options', 10, 1);
