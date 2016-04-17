@@ -59,3 +59,16 @@ function st_livesearch_filter_options($options) {
 }
 add_filter('livesearch_options_filter',
            'st_livesearch_filter_options', 10, 1);
+
+/**
+ * get the livesearch input box's dom id.
+ */
+function st_livesearch_input_id() {
+
+    $input_id = get_option('livesearch_input_id');
+    if($input_id === false) {
+        $input_id = 'livesearch';
+    }
+
+    return $input_id;
+}

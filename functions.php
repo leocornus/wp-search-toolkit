@@ -25,9 +25,11 @@ FILTERS;
  */
 function livesearch_onload_js() {
 
+    // get the livesearch input box's DOM id.
+    $input_id = st_livesearch_input_id();
+
     // the default filter options.
     $filterOptions = st_livesearch_default_options();
-
     // check the filter hooks.
     if(has_filter('livesearch_options_filter')) {
         $filterOptions = 
@@ -39,7 +41,7 @@ function livesearch_onload_js() {
 <script>
 jQuery( document ).ready(function() {
 
-    jQuery('#livesearch').liveSearch({
+    jQuery('#{$input_id}').liveSearch({
       searchResult: {
           // leave it empty to use the default 
           // search template.
