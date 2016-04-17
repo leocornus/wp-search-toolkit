@@ -48,7 +48,7 @@ function search_toolkit_admin_init() {
 /**
  * a simple filter hook function to demostrate the filter format.
  */
-function st_livesearch_filter_options($options) {
+function st_livesearch_filter_options() {
 
     $options = get_option('livesearch_filter_options');
     if($options === false) {
@@ -57,8 +57,6 @@ function st_livesearch_filter_options($options) {
 
     return $options;
 }
-add_filter('livesearch_options_filter',
-           'st_livesearch_filter_options', 10, 1);
 
 /**
  * get the livesearch input box's dom id.
@@ -67,6 +65,7 @@ function st_livesearch_input_id() {
 
     $input_id = get_option('livesearch_input_id');
     if($input_id === false) {
+        // The default id will be livesearch
         $input_id = 'livesearch';
     }
 
