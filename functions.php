@@ -25,10 +25,6 @@ FILTERS;
  */
 function livesearch_onload_js() {
 
-    // get current blog path ad the site..
-    global $current_blog;
-    $wppath = $current_blog->path; 
-
     // the default filter options.
     $filterOptions = st_livesearch_default_options();
 
@@ -52,7 +48,6 @@ jQuery( document ).ready(function() {
       },
       maxItems : 6,
       filterOptions: [
-          {label: 'Current Blog', value: 'site: {$wppath}'},
           {$filterOptions}
       ]
     });
