@@ -79,7 +79,7 @@ function st_livesearch_input_id() {
     $input_id = get_option('livesearch_input_id');
     if($input_id === false) {
         // The default id will be livesearch
-        $input_id = 'livesearch';
+        $input_id = st_livesearch_default_input_id();
     }
 
     return $input_id;

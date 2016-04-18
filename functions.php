@@ -29,6 +29,14 @@ FILTERS;
 }
 
 /**
+ * return the default id for the livesearch input box.
+ */
+function st_livesearch_default_input_id() {
+
+    return 'livesearch';
+}
+
+/**
  * this utility function will prepare the JavaScript code to
  * load the live search box to the top right corner.
  *
