@@ -19,6 +19,19 @@ define('SEARCH_TOOLKIT_PATH',
 //require_once(SEARCH_TOOLKIT_PATH . '/admin/index.php');
 require_once(SEARCH_TOOLKIT_PATH . '/functions.php');
 
+// register the deactivation script.
+register_deactivation_hook($search_toolkit_file, 
+                           'deactivate_search_toolkit');
+
+/**
+ * the deactivation script will simplely remove all options for now.
+ */
+function deactivate_search_toolkit() {
+
+    delete_option('livesearch_input_id');
+    delete_option('livesearch_filter_options');
+}
+
 // adding the dashboard page to manage
 add_action('admin_menu', 'search_toolkit_admin_init');
 function search_toolkit_admin_init() {
