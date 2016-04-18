@@ -8,7 +8,18 @@
  */
 function st_livesearch_default_options() {
 
+    // get the path for current blog.
+    global $current_blog;
+    $blog_path = $current_blog->path;
+    // the blog path has slash (/) in both beginning and ending.
+    // we need remove them.
+    $blog_path = trim($blog_path, "/"); // remove the beginning.
+    $blog_path = rtrim($blog_path, "/"); // remove the ending
+
+    // assume the Solr / Lucene is using blog path as the 
+    // value for site metadata.
     $options = <<<FILTERS
+{label: 'Current Site', value: 'site: {$blog_path}'},  
 {label: 'All', value: ''},
 {label: 'Wiki', value: 'site: wiki AND keywords: Acronyms'},
 {label: 'User Profile', value: 'keywords: "User Profile"'},
