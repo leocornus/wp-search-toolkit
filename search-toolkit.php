@@ -21,7 +21,6 @@ define('SEARCH_TOOLKIT_PATH',
 require_once(SEARCH_TOOLKIT_PATH . '/admin/index.php');
 require_once(SEARCH_TOOLKIT_PATH . '/functions.php');
 
-
 /**
  * a simple filter hook function to demostrate the filter format.
  */
